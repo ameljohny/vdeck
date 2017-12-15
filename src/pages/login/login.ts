@@ -28,7 +28,7 @@ export class LoginPage {
   	this.fire.auth.signInWithEmailAndPassword(this.username.value,this.password.value)
   	.then(() => {
   		this.alert('success,you are logged in');
-  		this.navCtrl.setRoot( LoggedInPage ) ;
+ 
   		//user logged in
 
   		})

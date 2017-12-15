@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the AddprofPage page.
@@ -15,9 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddprofPage {
 
-  constructor(public navCtrl: NavController) {
+
+  constructor(private AlertCtrl: AlertController, public navCtrl: NavController) {
   }
 
+
+alert(message:string){
+	this.AlertCtrl.create({
+	title: 'Create Profile',
+	subTitle: message,
+	buttons: ['Ok']
+	}).present();
+}
+
+saveprofile(){
+	this.alert('Profile Creation started');
+}
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddprofPage');
   }
