@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams , AlertController  } from 'ionic-angular';
+import { NavController , AlertController  } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginPage {
   	this.fire.auth.signInWithEmailAndPassword(this.username.value,this.password.value)
   	.then(() => {
   		this.alert('success,you are logged in');
- 
+s
   		//user logged in
 
   		})
