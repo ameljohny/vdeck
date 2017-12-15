@@ -38,7 +38,7 @@ export class RegisterPage {
   	this.fire.auth.createUserWithEmailAndPassword(this.username.value,this.password.value)
   	.then( data => {
   		this.alert('success,you are registered');
-  		this.navCtrl.setRoot( LoggedInPage ) ;
+
   		//user logged in
   		})
   	.catch(error =>{
