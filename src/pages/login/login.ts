@@ -1,25 +1,42 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams , AlertController  } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
+  templateUrl: 'login.html'
 })
 export class LoginPage {
+  @ViewChild('username') username;
+  @ViewChild('password') password;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController,private fire: AngularFireAuth,public navCtrl: NavController) {
+    
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  alert(message:string) {
+    this.alertCtrl.create({
+    	title:'Login',
+    	subTitle: message,
+    	buttons:['ok']
+      
+    }).present();
+   
+  }
+
+  SignInUser(){
+  	this.fire.auth.signInWithEmailAndPassword(this.username.value,this.password.value)
+  	.then(() => {
+  		this.alert('success,you are logged in');
+  		this.navCtrl.setRoot( LoggedInPage ) ;
+  		//user logged in
+
+  		})
+  	.catch( error => {
+  		this.alert(error.message);
+  		}) 
+   
+    
   }
 
 }
