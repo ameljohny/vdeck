@@ -1,13 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController , AlertController  } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { RegisterPage} from '../register/register'
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  @ViewChild('username') username;
+  @ViewChild('email') email;
   @ViewChild('password') password;
 
   constructor(private alertCtrl: AlertController,private fire: AngularFireAuth,public navCtrl: NavController) {
@@ -25,7 +26,7 @@ export class LoginPage {
   }
 
   SignInUser(){
-  	this.fire.auth.signInWithEmailAndPassword(this.username.value,this.password.value)
+  	this.fire.auth.signInWithEmailAndPassword(this.email.value,this.password.value)
   	.then(() => {
   		this.alert('success,you are logged in');
   		
@@ -38,5 +39,7 @@ export class LoginPage {
    
     
   }
-
+   register(){
+   	this.navCtrl.push(RegisterPage);
+   }
 }

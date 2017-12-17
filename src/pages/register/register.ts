@@ -15,7 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  @ViewChild('username') username;
+  @ViewChild('email') email;
   @ViewChild('password') password;
 
    alert(message:string) {
@@ -35,10 +35,10 @@ export class RegisterPage {
   }
 
   registerUser(){
-  	this.fire.auth.createUserWithEmailAndPassword(this.username.value,this.password.value)
+  	this.fire.auth.createUserWithEmailAndPassword(this.email.value,this.password.value)
   	.then( data => {
   		this.alert('success,you are registered');
-
+  		
   		//user logged in
   		})
   	.catch(error =>{
