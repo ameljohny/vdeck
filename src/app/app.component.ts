@@ -10,6 +10,8 @@ import { AddprofPage } from '../pages/addprof/addprof';
 
 
 
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -17,6 +19,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
+
+  
 
   pages: Array<{title: string, component: any}>;
 
