@@ -1,9 +1,8 @@
-export interface Profile
+export interface Personal
 {
 	Firstname:string
 	Lastname:string
-	Designation:string
-	Company:string
+	Dob:string
 	Phone:string
 	email:string
 

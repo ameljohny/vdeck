@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
-import{Profile} from '../../models/Profile';
+
+import{Personal} from '../../models/Personal';
+import{Company} from '../../models/Company';
 
 /**
  * Generated class for the AddprofPage page.
@@ -19,7 +21,8 @@ import{Profile} from '../../models/Profile';
 })
 export class AddprofPage {
 
-  profile = {} as Profile
+  personal = {} as Personal
+  company = {} as Company
 
   myInput
 
@@ -45,15 +48,22 @@ alert(message:string){
 
 saveprofile(){
 
-this.afDatabase.list('profile/').push(this.profile).then( data => {
+  
+
+  
+
+this.afDatabase.list('profile/profiledata/personal').push(this.personal).then( data => {
       this.alert('Profile Creation started');
       })
 
-	
+
+this.afDatabase.list('profile/profiledata/company').push(this.company)
+
 
 }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddprofPage');
   }
+
 
 }
