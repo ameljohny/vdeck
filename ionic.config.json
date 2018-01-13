@@ -1,6 +1,6 @@
 {
   "name": "virtualdeck",
-  "app_id": "",
+  "app_id": "3b44b6a6",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
