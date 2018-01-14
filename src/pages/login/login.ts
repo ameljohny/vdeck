@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController , AlertController  } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterPage} from '../register/register'
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'page-login',
@@ -35,10 +36,15 @@ export class LoginPage {
   		})
   	.catch( error => {
   		this.alert(error.message);
-  		}) 
-   
-    
-  }
+      }) 
+      
+  } 
+  login() {
+    this.fire.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }   
+  logout() {
+    this.fire.auth.signOut();
+      } 
    register(){
    	this.navCtrl.push(RegisterPage);
    }

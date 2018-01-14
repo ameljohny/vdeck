@@ -1,6 +1,6 @@
 export interface Company
 {
-	Name:string
+	CompanyName:string
 	Designation:string
 	Company:string
 	Address:string
