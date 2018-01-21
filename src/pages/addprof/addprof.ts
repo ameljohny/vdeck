@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 
 import{Personal} from '../../models/Personal';
-import{Company} from '../../models/Company';
+
 
 /**
  * Generated class for the AddprofPage page.
@@ -22,7 +22,7 @@ import{Company} from '../../models/Company';
 export class AddprofPage {
 
   personal = {} as Personal
-  company = {} as Company
+  
 
   myInput
 
@@ -57,7 +57,7 @@ this.afDatabase.list('profile/profiledata/personal').push(this.personal).then( d
       })
 
 
-this.afDatabase.list('profile/profiledata/company').push(this.company)
+
 
 
 }
