@@ -1,18 +1,21 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController , AlertController  } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component } from '@angular/core';
+import { NavController , AlertController ,NavParams, IonicPage } from 'ionic-angular';
 import { RegisterPage} from '../register/register'
-import * as firebase from 'firebase/app';
 
+
+import { usercreds } from '../../models/interfaces/usercreds';
+
+import { AuthProvider } from '../../providers/auth/auth';
+
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  @ViewChild('email') email;
-  @ViewChild('password') password;
-
-  constructor(private alertCtrl: AlertController,private fire: AngularFireAuth,public navCtrl: NavController) {
+  credentials = {} as usercreds;
+  
+  constructor(private alertCtrl: AlertController, public navParams: NavParams,public authservice: AuthProvider,public navCtrl: NavController) {
     
   }
 
@@ -27,24 +30,20 @@ export class LoginPage {
   }
 
   SignInUser(){
-  	this.fire.auth.signInWithEmailAndPassword(this.email.value,this.password.value)
-  	.then(() => {
-  		this.alert('success,you are logged in');
-  		
-  		//user logged in
-
-  		})
-  	.catch( error => {
-  		this.alert(error.message);
-      }) 
+  	this.authservice.login(this.credentials).then((res: any) => {
+      if (!res.code)
+        this.navCtrl.setRoot('TabsPage');
+      else
+      this.alert(res.message);
+      
+    })
+  		 
       
   } 
-  login() {
-    this.fire.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }   
-  logout() {
-    this.fire.auth.signOut();
-      } 
+  
+  // logout() {
+  //   this.authservice.Logout();
+  //     } 
    register(){
    	this.navCtrl.push(RegisterPage);
    }

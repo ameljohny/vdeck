@@ -1,9 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+
+import { firebaseAuth } from './app.firebaseconfig';
+import { AuthProvider } from '../providers/auth/auth';
+import { UserProvider } from '../providers/user/user';
+import { ImghandlerProvider } from '../providers/imghandler/imghandler';
+import { RequestsProvider } from '../providers/requests/requests';
+import { ChatProvider } from '../providers/chat/chat';
+import { GroupsProvider } from '../providers/groups/groups';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,17 +26,6 @@ import { AddprofPage } from '../pages/addprof/addprof';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-
-const firebaseAuth= {
-    apiKey: "AIzaSyAwKSj0ER8zsXXmK1pDDpEaqsEzm7bxWPQ",
-    authDomain: "virtualdeck-01.firebaseapp.com",
-    databaseURL: "https://virtualdeck-01.firebaseio.com",
-    projectId: "virtualdeck-01",
-    storageBucket: "virtualdeck-01.appspot.com",
-    messagingSenderId: "267200803892"
-  };
-  
 
 @NgModule({
   declarations: [
@@ -37,20 +39,30 @@ const firebaseAuth= {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAuth),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule
+   
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    LoginPage,
-    RegisterPage,
-    AddprofPage
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    File,
+    FilePath,
+    FileChooser,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider,
+    AngularFireAuth,
+    UserProvider,
+    ImghandlerProvider,
+    UserProvider,
+    RequestsProvider,
+    ChatProvider,
+    GroupsProvider,
+    SplashScreen,
+    AuthProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
    
   ]
