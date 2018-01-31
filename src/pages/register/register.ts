@@ -1,7 +1,7 @@
-import { Component , ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams , AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-
+import { Component , ViewChild, ErrorHandler} from '@angular/core';
+import { IonicPage, NavController, NavParams , AlertController,IonicErrorHandler } from 'ionic-angular';
+import { AngularFireAuth   } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -36,15 +36,24 @@ export class RegisterPage {
 
   registerUser(){
   	this.fire.auth.createUserWithEmailAndPassword(this.email.value,this.password.value)
-  	.then( data => {
-  		this.alert('success,you are registered');
-  		
-  		//user logged in
-  		})
-  	.catch(error =>{
-  		this.alert(error.message);
-  		
-  		})
+  	.then( (success) => {
+      let user:any = firebase.auth().currentUser;
+      user.sendEmailVerification().then(
+        (success) => {console.log("please verify your email")
+        console.log(user.IsEmailVerified)} 
+        
+      ).catch(
+        (err) => {
+          // this.error = err;
+          console.log("error in verification");
+        }
+      )
+
+   }).catch(
+     (err) => {
+      //  this.error = err;
+      console.log("error in verification");
+     })
   }
 
 }

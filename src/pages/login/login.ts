@@ -27,8 +27,10 @@ export class LoginPage {
   }
 
   SignInUser(){
+    //user = mAuth.getCurrentUser().reload();
   	this.fire.auth.signInWithEmailAndPassword(this.email.value,this.password.value)
-  	.then(() => {
+    //user.isEmailVerified()
+    .then((success) => {
   		this.alert('success,you are logged in');
   		
   		//user logged in
