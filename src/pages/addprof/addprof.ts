@@ -28,8 +28,6 @@ export class AddprofPage {
   company = {} as Company
   profilekey = {} as ProfileKey
   
-  myInput
-
 
   constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
   

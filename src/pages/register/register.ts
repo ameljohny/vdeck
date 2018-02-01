@@ -2,6 +2,10 @@ import { Component , ViewChild, ErrorHandler} from '@angular/core';
 import { IonicPage, NavController, NavParams , AlertController,IonicErrorHandler } from 'ionic-angular';
 import { AngularFireAuth   } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { OnInit } from '@angular/core';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms/src/directives/validators';
+import { AbstractControl } from '@angular/forms/src/model';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -14,9 +18,11 @@ import * as firebase from 'firebase/app';
   selector: 'page-register',
   templateUrl: 'register.html',
 })
-export class RegisterPage {
-  @ViewChild('email') email;
-  @ViewChild('password') password;
+
+export class RegisterPage implements OnInit {
+  newuser: FormGroup;
+
+  //@ViewChild('password') password1;
 
    alert(message:string) {
     this.alertCtrl.create({
@@ -31,16 +37,39 @@ export class RegisterPage {
   }
 
   ionViewDidLoad() {
+    console.log(this.newuser.controls.email);
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  registerUser(){
-  	this.fire.auth.createUserWithEmailAndPassword(this.email.value,this.password.value)
+  ngOnInit() {
+    this.newuser=new FormGroup({
+      email: new FormControl('',[Validators.required,]),
+      password: new FormControl('',[Validators.required]),
+      re_password: new FormControl('',[Validators.required,this.equalto('password')])
+    });
+  }
+
+
+  equalto(field_name): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+    
+    let input = control.value;
+    
+    let isValid=control.root.value[field_name]==input
+    if(!isValid)
+    return { 'equalTo': {isValid} }
+    else
+    return null;
+    };
+    }
+ 
+  registerUser(newuser){
+  	this.fire.auth.createUserWithEmailAndPassword(newuser.controls.email.value,newuser.controls.password.value)
   	.then( (success) => {
       let user:any = firebase.auth().currentUser;
       user.sendEmailVerification().then(
         (success) => {console.log("please verify your email")
-        console.log(user.IsEmailVerified)} 
+        console.log(user.IsEmailVerified)}  // displays the boolean value for verification
         
       ).catch(
         (err) => {
@@ -52,7 +81,7 @@ export class RegisterPage {
    }).catch(
      (err) => {
       //  this.error = err;
-      console.log("error in verification");
+      console.log("error in Signup");
      })
   }
 
