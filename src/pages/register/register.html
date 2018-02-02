@@ -14,18 +14,37 @@
 
 
 <ion-content padding>
- <ion-list>
+    <form novalidate (ngSubmit)="registerUser(newuser)" [formGroup]="newuser">
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email" #email></ion-input>
+      <ion-input type="text" value="" formControlName="email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" #password></ion-input>
+      <ion-input type="password" value="" formControlName="password"></ion-input>
     </ion-item>
- </ion-list>
+    <!-- <ion-item no-lines *ngIf="( user.get('password').hasError('required') ) && user.get('password').touched">
+       <div class="error" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
+          Password is required
+      </div>        
+    </ion-item> -->
+    <ion-item>
+      <ion-label floating>Confirm Password</ion-label>
+      <ion-input type="password"   value="" formControlName="re_password"></ion-input>
+    </ion-item>
+    <!-- <ion-item no-lines *ngIf="( newuser.get('re_password').hasError('equalTo') || newuser.get('re_password').hasError('required') ) && newuser.get('re_password').touched">
+
+    <div class="error" *ngIf="newuser.get('re_password').hasError('required') && newuser.get('re_password').touched">
+      Confirm password is required
+    </div>
+      <div class="error" *ngIf="newuser.get('re_password').hasError('equalTo') && newuser.get('re_password').touched">
+        Password Mismatch
+      </div>
+    </ion-item> -->
+ 
   <div padding>
-    <button block ion-button (click)="registerUser()">Register</button> 
+    <button block ion-button [disabled]="newuser.invalid" >Register</button> 
   </div>
+</form>
 </ion-content>

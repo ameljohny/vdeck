@@ -27,24 +27,24 @@ page-login {
         border: medium none;
     
         .text-input, {
-            color: #fff;
+            color: #000;
         }
     
         
         input::-moz-placeholder{
-            color: #fff!important;
+            color: #000!important;
         }
         input:-moz-placeholder {
-            color: #fff!important;
+            color: #000!important;
         }
         *:-moz-placeholder{
-            color: #fff!important;
+            color: #000!important;
         }
         *:-ms-input-placeholder{
-            color: #fff!important;
+            color: #000!important;
         }
         *::-webkit-input-placeholder{
-            color: #fff!important;
+            color: #000!important;
         }
     
     }
