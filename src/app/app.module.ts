@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AddprofPage } from '../pages/addprof/addprof';
+import { userDetailsPage } from  '../pages/userDetails/userDetails' ;
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +33,10 @@ const firebaseAuth= {
     HomePage,
     LoginPage,
     RegisterPage,
-    AddprofPage
+    AddprofPage,
+   userDetailsPage
+  
+   
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,11 @@ const firebaseAuth= {
     HomePage,
     LoginPage,
     RegisterPage,
-    AddprofPage
+    AddprofPage,
+   userDetailsPage
+
+   
+   
   ],
   providers: [
     StatusBar,

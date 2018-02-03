@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
-
+import * as firebase from 'firebase/app';
 import{Personal} from '../../models/Personal';
 
 
@@ -20,7 +20,7 @@ import{Personal} from '../../models/Personal';
   templateUrl: 'addprof.html',
 })
 export class AddprofPage {
-
+  firedata = firebase.database().ref('/profile/');
   personal = {} as Personal
   
 
@@ -52,7 +52,7 @@ saveprofile(){
 
   
 
-this.afDatabase.list('profile/profiledata/personal').push(this.personal).then( data => {
+this.firedata.child(firebase.auth().currentUser.uid).set(this.personal).then( data => {
       this.alert('Profile Creation started');
       })
 
