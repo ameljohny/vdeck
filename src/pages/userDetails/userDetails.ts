@@ -76,7 +76,7 @@ getuserdetails() {
   }
 
 navigateTo(){
-  this.navCtrl.push(LoginPage);
+  this.navCtrl.setRoot(LoginPage);
 }
 
 editprofile()

@@ -16,6 +16,7 @@ import {EditPage} from '../pages/editpage/edit';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { UserProvider } from '../providers/user/user';
 
 
 const firebaseAuth= {
@@ -64,7 +65,7 @@ const firebaseAuth= {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-   
+    UserProvider
   ]
 })
 export class AppModule {}
