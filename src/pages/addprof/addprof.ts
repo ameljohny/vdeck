@@ -1,10 +1,13 @@
+import { ProfileKey } from './../../models/ProfileKey';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
+import * as firebase from 'firebase/app';
 
 import{Personal} from '../../models/Personal';
+import{Company} from '../../models/Company';
 
 
 /**
@@ -22,19 +25,18 @@ import{Personal} from '../../models/Personal';
 export class AddprofPage {
 
   personal = {} as Personal
+
   
-
-  myInput
-
 
   constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
   
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    console.log(user.email);
+    console.log(user.uid);
+    
 
-  
-  
-
-
-
+ 
 
 }
 
@@ -50,14 +52,18 @@ saveprofile(){
 
   
 
-  
+  var userID = firebase.auth().currentUser.uid;   
 
-this.afDatabase.list('profile/profiledata/personal').push(this.personal).then( data => {
-      this.alert('Profile Creation started');
-      })
+// this.afDatabase.list('profile/profiledata/' + userID + '/profilekey').push(this.profilekey).then( data => {
+//       this.alert('ProfileKey Creation started');
+//       })
+// this.afDatabase.list('profile/profiledata/' + userID + '/userinfo').push(this.personal).then( data => {
+//   this.alert('UserInfo Creation started');
+//   })
 
-
-
+// this.afDatabase.list('profile/profiledata/' + userID + '/workinfo').push(this.company).then( data => {
+//   this.alert('WorkInfo Creation started');
+//   })
 
 
 }

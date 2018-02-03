@@ -10,7 +10,6 @@ import { FilePath } from '@ionic-native/file-path';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-
 import { firebaseAuth } from './app.firebaseconfig';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user';
@@ -27,6 +26,7 @@ import { AddprofPage } from '../pages/addprof/addprof';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -63,13 +63,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AuthProvider,
     AngularFireAuth,
     UserProvider,
-    ImghandlerProvider,
-    UserProvider,
+    ImghandlerProvider, 
     RequestsProvider,
     ChatProvider,
     GroupsProvider,
-    SplashScreen,
-    AuthProvider,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
    
   ]
