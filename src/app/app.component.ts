@@ -7,6 +7,9 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AddprofPage } from '../pages/addprof/addprof';
 
+import { userDetailsPage } from  '../pages/userDetails/userDetails' ;
+import {EditPage} from '../pages/editpage/edit';
+
 
 
 
@@ -30,7 +33,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Login', component: LoginPage },
-      { title: 'Add Profile', component: AddprofPage }
+      { title: 'Add Profile', component: AddprofPage },
+      { title: 'userdetails', component: userDetailsPage },
+     
     ];
 
   }

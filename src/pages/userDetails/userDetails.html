@@ -1,0 +1,17 @@
+<ion-card text-center>
+	<ion-card-content>
+		<ion-card-title >
+			{{firstname}}
+		<br> {{lastname}}
+		<br>{{dob}}
+		<br>{{company}}
+		<br>{{designation}}
+		<br>{{phone}}
+		<br>{{email}}
+		</ion-card-title>
+		
+	</ion-card-content>
+</ion-card>
+<button block ion-button (click)="getuserdetails()">View my Profile</button>
+<button block ion-button (click)="navigateTo()">Go to Login</button>
+<button block ion-button (click)="editprofile()">Edit my Profile</button>
