@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+//import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import{Personal} from '../../models/Personal';
+
+import { Component, NgZone } from '@angular/core';
 
 
 /**
@@ -22,6 +24,7 @@ import{Personal} from '../../models/Personal';
 export class AddprofPage {
   firedata = firebase.database().ref('/profile/');
   personal = {} as Personal
+  
   
 
   myInput

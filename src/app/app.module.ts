@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AddprofPage } from '../pages/addprof/addprof';
 import { userDetailsPage } from  '../pages/userDetails/userDetails' ;
+import {EditPage} from '../pages/editpage/edit';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -34,7 +35,8 @@ const firebaseAuth= {
     LoginPage,
     RegisterPage,
     AddprofPage,
-   userDetailsPage
+   userDetailsPage,
+   EditPage
   
    
   ],
@@ -52,7 +54,8 @@ const firebaseAuth= {
     LoginPage,
     RegisterPage,
     AddprofPage,
-   userDetailsPage
+   userDetailsPage,
+   EditPage
 
    
    

@@ -9,7 +9,7 @@ import { RegisterPage } from '../pages/register/register';
 import { AddprofPage } from '../pages/addprof/addprof';
 
 import { userDetailsPage } from  '../pages/userDetails/userDetails' ;
-
+import {EditPage} from '../pages/editpage/edit';
 
 
 
