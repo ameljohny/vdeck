@@ -37,7 +37,7 @@ export class userDetailsPage {
 
 
 constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
-
+    this.getuserdetails();
   }
 
 alert(message:string){
