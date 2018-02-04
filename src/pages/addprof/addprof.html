@@ -18,10 +18,11 @@
 
 <ion-content padding>
 	<ion-list inset>
-		<ion-item>
+    <ion-item>
       <ion-label >Profile Picture</ion-label>
-      <ion-input type="file" [id]="personal.Pic"></ion-input>
+      <ion-input type="file" [id]="pic"></ion-input>
     </ion-item>
+
 
   <ion-item>
     <ion-label>Firstname</ion-label>
@@ -40,12 +41,12 @@
 
   <ion-item>
     <ion-label>Designation</ion-label>
-    <ion-input [(ngModel)]="company.Designation"></ion-input>
+    <ion-input [(ngModel)]="personal.Designation"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Company</ion-label>
-    <ion-input [(ngModel)]="company.Company"></ion-input>
+    <ion-input [(ngModel)]="personal.Company"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -60,7 +61,7 @@
 
 <ion-item>
     <ion-label>Address</ion-label>
-    <ion-input [(ngModel)]="company.Address"></ion-input>
+    <ion-input [(ngModel)]="personal.address"></ion-input>
   </ion-item>
   	<button ion-button (click)="saveprofile()">Save</button>
   

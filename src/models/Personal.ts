@@ -5,5 +5,9 @@ export interface Personal
 	Dob:string
 	Phone:string
 	email:string
+	Name:string
+	Designation:string
+	Company:string
+	Address:string
 
 }
