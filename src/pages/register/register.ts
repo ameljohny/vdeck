@@ -70,7 +70,7 @@ export class RegisterPage implements OnInit {
       user.sendEmailVerification().then(
         (success) => {console.log("please verify your email")
         console.log(user.IsEmailVerified)}  // displays the boolean value for verification
-        
+        //this.alert('Verify your email.')
       ).catch(
         (err) => {
           // this.error = err;
