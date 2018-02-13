@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 /**
  * Generated class for the ShareProfilePage page.
  *
@@ -15,11 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ShareProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShareProfilePage');
   }
-
+  
 }
