@@ -30,6 +30,7 @@ export class userDetailsPage {
    designation:string;
    phone:string;
    email:string;
+   addr:string;
  database=firebase.database();
  user = firebase.auth().currentUser;
  userId = firebase.auth().currentUser.uid;
@@ -37,6 +38,8 @@ export class userDetailsPage {
 
 
 constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
+
+    this.getuserdetails();
 
   }
 
@@ -63,7 +66,8 @@ getuserdetails() {
        this.designation=user.Designation;
        this.phone=user.Phone;
        this.email=user.email;
-
+       this.addr=user.address;
+      console.log(this.addr);
 
        
 
@@ -76,7 +80,11 @@ getuserdetails() {
   }
 
 navigateTo(){
+
   this.navCtrl.push(LoginPage);
+
+  this.navCtrl.setRoot(LoginPage);
+
 }
 
 editprofile()
