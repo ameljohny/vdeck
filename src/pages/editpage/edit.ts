@@ -1,12 +1,10 @@
 import { Personal } from './../../models/Personal';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
-import { LoginPage} from '../login/login'
 
 @Component({
   selector: 'page-edit',
@@ -28,7 +26,7 @@ firstname : string;
  personal = {} as Personal
  
 
-	 constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
+	 constructor(private AlertCtrl: AlertController,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
     var promise = new Promise((resolve, reject) => {
       this.firedata.child(firebase.auth().currentUser.uid).once('value', (snapshot) => {
         resolve(snapshot.val());

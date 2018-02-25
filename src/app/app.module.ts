@@ -1,23 +1,33 @@
-import { ResetpasswordPage } from './../pages/resetpassword/resetpassword';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AddprofPage } from '../pages/addprof/addprof';
 import { userDetailsPage } from  '../pages/userDetails/userDetails' ;
-import {EditPage} from '../pages/editpage/edit';
+import { EditPage } from '../pages/editpage/edit';
+import { ShareProfilePage } from './../pages/share-profile/share-profile';
+import { ResetpasswordPage } from './../pages/resetpassword/resetpassword';
+import { BscanserialPage } from './../pages/bscanserial/bscanserial';
+import { DetailPage } from './../pages/detail/detail';
 
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { BLE } from '@ionic-native/ble'
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { UserProvider } from '../providers/user/user';
+import { ProfileProvider } from '../providers/profile/profile';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 const firebaseAuth= {
@@ -38,9 +48,11 @@ const firebaseAuth= {
     RegisterPage,
     AddprofPage,
     userDetailsPage,
-     EditPage,
-     ResetpasswordPage
-  
+    EditPage,
+    ResetpasswordPage,
+    ShareProfilePage,
+    DetailPage,
+    BscanserialPage  
    
   ],
   imports: [
@@ -59,7 +71,10 @@ const firebaseAuth= {
     AddprofPage,
     userDetailsPage,
     EditPage,
-    ResetpasswordPage
+    ResetpasswordPage,
+    ShareProfilePage,
+    DetailPage,
+    BscanserialPage
 
    
    
@@ -68,7 +83,10 @@ const firebaseAuth= {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    BLE,
+    ProfileProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { usercreds } from '../../models/interfaces/usercreds';
-
+import firebase from 'firebase';
 /*
   Generated class for the AuthProvider provider.
 
@@ -20,17 +20,35 @@ export class AuthProvider {
   
 */  
   
-  login(credentials: usercreds) {
-    var promise = new Promise((resolve, reject) => {
-      this.fire.auth.signInWithEmailAndPassword(credentials.email, credentials.password).then(() => {
-        resolve(true);
-      }).catch((err) => {
-        reject(err);
-       })
-    })
 
-    return promise;
-    
+
+  loginUser(email: string, password: string): Promise<any> {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
+  signupUser(email: string, password: string): Promise<any> {
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(newUser => {
+        firebase
+          .database()
+          .ref(`/userProfile/${newUser.uid}/email`)
+          .set(email);
+      })
+      .catch(error => console.error(error));
+  }
+
+  resetPassword(email: string): Promise<void> {
+    return firebase.auth().sendPasswordResetEmail(email);
+  }
+
+  logoutUser(): Promise<void> {
+    const userId: string = firebase.auth().currentUser.uid;
+    firebase
+      .database()
+      .ref(`/userProfile/${userId}`)
+      .off();
+    return firebase.auth().signOut();
+  }
 }
