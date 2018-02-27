@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EditProfile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-item>
+    <ion-label>Firstname</ion-label>
+    <ion-input [(ngModel)]="personal.Firstname" placeholder ={{firstname}}></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Lastname</ion-label>
+    <ion-input [(ngModel)]="personal.Lastname" placeholder ={{lastname}}></ion-input>
+  </ion-item>
+
+   <ion-item>
+    <ion-label>Date of Birth</ion-label>
+    <ion-input [(ngModel)]="personal.Dob" placeholder ={{dob}}></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Designation</ion-label>
+    <ion-input [(ngModel)]="personal.Designation" placeholder ={{designation}}></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Company</ion-label>
+    <ion-input [(ngModel)]="personal.Company" placeholder ={{company}}></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Phone</ion-label>
+    <ion-input [(ngModel)]="personal.Phone" placeholder ={{phone}}></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>email</ion-label>
+    <ion-input [(ngModel)]="personal.email" placeholder ={{email}}></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-label>Address</ion-label>
+    <ion-input [(ngModel)]="personal.address" placeholder ={{address}}></ion-input>
+  </ion-item>
+
+    <button ion-button (click)="editmyprofile()">Update</button>

@@ -1,18 +1,28 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController , AlertController  } from 'ionic-angular';
+import { ResetpasswordPage } from './../resetpassword/resetpassword';
+import { UserProvider } from './../../providers/user/user';
+import { Component } from '@angular/core';
+import { NavController ,Alert, AlertController, Loading, LoadingController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { RegisterPage} from '../register/register'
-
+import { RegisterPage} from '../register/register';
+import * as firebase from 'firebase/app';
+import { HomePage } from '../home/home';
+import { AuthProvider } from './../../providers/auth/auth';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  @ViewChild('email') email;
-  @ViewChild('password') password;
+ email: string;
+ password: string;
+ public loading: Loading;
 
-  constructor(private alertCtrl: AlertController,private fire: AngularFireAuth,public navCtrl: NavController) {
-    
+  constructor(private alertCtrl: AlertController,
+    private fire: AngularFireAuth,
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController,
+    public authProvider: AuthProvider,) 
+    {
+  
   }
 
   alert(message:string) {
@@ -25,20 +35,37 @@ export class LoginPage {
    
   }
 
+  
   SignInUser(){
-  	this.fire.auth.signInWithEmailAndPassword(this.email.value,this.password.value)
-  	.then(() => {
-  		this.alert('success,you are logged in');
-  		
-  		//user logged in
+    const email = this.email;
+      const password = this.password;
 
-  		})
-  	.catch( error => {
-  		this.alert(error.message);
-  		}) 
-   
-    
+      this.authProvider.loginUser(email, password).then(
+        authData => {
+          this.loading.dismiss().then(() => {
+            this.navCtrl.setRoot(HomePage);
+          });
+        },
+        error => {
+          this.loading.dismiss().then(() => {
+            const alert: Alert = this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }]
+            });
+            alert.present();
+          });
+        }
+      );
+      this.loading = this.loadingCtrl.create();
+      this.loading.present();
+      
+  } 
+  resetpassword(){
+    this.navCtrl.push(ResetpasswordPage);
   }
+  logout() {
+    this.fire.auth.signOut();
+      } 
    register(){
    	this.navCtrl.push(RegisterPage);
    }

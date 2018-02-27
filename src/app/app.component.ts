@@ -1,13 +1,16 @@
+import { firebaseAuth } from './app.firebaseconfig';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform,} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AddprofPage } from '../pages/addprof/addprof';
+import { userDetailsPage } from  '../pages/userDetails/userDetails' ;
+import { ShareProfilePage } from '../pages/share-profile/share-profile';
 
+import firebase from 'firebase';
 
 
 
@@ -18,20 +21,36 @@ import { AddprofPage } from '../pages/addprof/addprof';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any ;
 
   
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(public platform: Platform,
+     public statusBar: StatusBar,
+      public splashScreen: SplashScreen
+    ) {
 
-    // used for an example of ngFor and navigation
+    firebase.initializeApp(firebaseAuth);
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.rootPage = LoginPage;
+        unsubscribe();
+      } else {
+        this.rootPage = HomePage;
+        unsubscribe();
+      }
+    });
+
+    //slide menu tabs.
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage },
-      { title: 'Add Profile', component: AddprofPage }
+      
+      
+      { title: 'Add Profile', component: AddprofPage },
+
+      { title: 'share', component: ShareProfilePage },
+     
     ];
 
   }
@@ -48,6 +67,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
+    
   }
 }
