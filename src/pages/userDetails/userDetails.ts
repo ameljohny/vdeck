@@ -237,4 +237,103 @@ navigateTo(){
     });
     alert.present();
   }
+
+  updateCompany(): void {
+    const alert: Alert = this.alertCtrl.create({
+      message: 'Change Company',
+      inputs: [
+        {
+          name: 'Company',
+          placeholder: 'Your Company name',
+          value: this.userProfile.firstName
+        },
+        
+      ],
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: 'Save',
+          handler: data => {
+            this.profileProvider.updateCompany(data.Company);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  updateDesignation(): void {
+    const alert: Alert = this.alertCtrl.create({
+      message: 'Change Designation',
+      inputs: [
+        {
+          name: 'Designation',
+          placeholder: 'Your Designation',
+          value: this.userProfile.firstName
+        },
+        
+      ],
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: 'Save',
+          handler: data => {
+            this.profileProvider.updateDesignation(data.Designation);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  updatePhone(): void {
+    const alert: Alert = this.alertCtrl.create({
+      message: 'Change Phone',
+      inputs: [
+        {
+          name: 'Phone',
+          placeholder: 'Your Phone number',
+          value: this.userProfile.Phone
+        },
+        
+      ],
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: 'Save',
+          handler: data => {
+            this.profileProvider.updatePhone(data.Phone);
+          }
+        }
+      ]
+    });
+    alert.present();  
+  }
+
+  updateAddress(): void {
+    const alert: Alert = this.alertCtrl.create({
+      message: 'Change Address',
+      inputs: [
+        {
+          name: 'address',
+          placeholder: 'Your Address number',
+          value: this.userProfile.address
+        },
+        
+      ],
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: 'Save',
+          handler: data => {
+            this.profileProvider.updateAddress(data.address);
+          }
+        }
+      ]
+    });
+    alert.present();  
+  }
+  
+
+
 }

@@ -1,3 +1,4 @@
+import { Company } from './../../models/Company';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 
@@ -19,12 +20,28 @@ export class ProfileProvider {
     return this.userProfile;
   }
 
-  updateName(firstName: string, lastName: string): Promise<any> {
-    return this.userProfile.update({ firstName, lastName });
+  updateName(FirstName: string, LastName: string): Promise<any> {
+    return this.userProfile.update({ FirstName, LastName });
   }
 
   updateDOB(Dob: string): Promise<any> {
     return this.userProfile.update({ Dob });
+  }
+
+  updatePhone(Phone: string): Promise<any> {
+    return this.userProfile.update({ Phone });
+  }
+
+  updateAddress(address: string): Promise<any> {
+    return this.userProfile.update({ address });
+  }
+
+  updateCompany(Company: string): Promise<any> {
+    return this.userProfile.update({ Company });
+  }
+
+  updateDesignation(Designation: string): Promise<any> {
+    return this.userProfile.update({ Designation });
   }
 
   updateEmail(newEmail: string, password: string): Promise<any> {

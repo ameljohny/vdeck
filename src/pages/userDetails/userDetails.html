@@ -101,6 +101,78 @@
 						</ion-row>
 					</ion-grid>
 				</ion-item>
-			</ion-list>
+		
 
+				<ion-item (click)="updateCompany()">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-6>
+								Company
+							</ion-col>
+							<ion-col col-6 *ngIf="userProfile?.Company">
+								{{userProfile?.Company}}
+							</ion-col>
+							<ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.Company">
+								<span>
+									Change Company
+								</span>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-item>
+
+				<ion-item (click)="updateDesignation()">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-6>
+								Designation
+							</ion-col>
+							<ion-col col-6 *ngIf="userProfile?.Designation">
+								{{userProfile?.Designation}}
+							</ion-col>
+							<ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.Designation">
+								<span>
+									Change Designation
+								</span>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-item>
+
+				<ion-item (click)="updatePhone()">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-6>
+								Phone
+							</ion-col>
+							<ion-col col-6 *ngIf="userProfile?.Phone">
+								{{userProfile?.Phone}}
+							</ion-col>
+							<ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.Phone">
+								<span>
+									Change Phone
+								</span>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-item>
+
+				<ion-item (click)="updateAddress()">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-6>
+								Address
+							</ion-col>
+							<ion-col col-6 *ngIf="userProfile?.address">
+								{{userProfile?.address}}
+							</ion-col>
+							<ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.address">
+								<span>
+									Change Address
+								</span>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-item>
+			</ion-list>
 </ion-content>
