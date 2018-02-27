@@ -48,7 +48,6 @@ export class MyApp {
       
       
       { title: 'Add Profile', component: AddprofPage },
-
       { title: 'share', component: ShareProfilePage },
      
     ];
