@@ -1,3 +1,4 @@
+import { NfcSharePage } from './../pages/nfc-share/nfc-share';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -23,10 +24,9 @@ import { DetailPage } from './../pages/detail/detail';
 
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { BLE } from '@ionic-native/ble'
-
+import { NFC, Ndef } from '@ionic-native/nfc';
 
 import { UserProvider } from '../providers/user/user';
-
 import { ProfileProvider } from '../providers/profile/profile';
 import { AuthProvider } from '../providers/auth/auth';
 
@@ -53,7 +53,8 @@ const firebaseAuth= {
     ResetpasswordPage,
     ShareProfilePage,
     DetailPage,
-    BscanserialPage
+    BscanserialPage,
+    NfcSharePage  
    
   ],
   imports: [
@@ -75,7 +76,8 @@ const firebaseAuth= {
     ResetpasswordPage,
     ShareProfilePage,
     DetailPage,
-    BscanserialPage
+    BscanserialPage,
+    NfcSharePage
 
    
    
@@ -83,12 +85,13 @@ const firebaseAuth= {
   providers: [
     StatusBar,
     SplashScreen,
-    BluetoothSerial,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     BLE,
     ProfileProvider,
-    AuthProvider
+    AuthProvider,
+    NFC,
+    Ndef
   ]
 })
 export class AppModule {}

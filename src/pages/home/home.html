@@ -4,6 +4,9 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
+        <button ion-button icon-only (click)="goToAddProfile()">
+            <ion-icon name="person--add"></ion-icon>
+          </button>
       <button ion-button icon-only (click)="goToProfile()">
         <ion-icon name="person"></ion-icon>
       </button>
@@ -16,5 +19,15 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-fab right bottom>
+    <button ion-fab color="primary"><ion-icon name="share"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab (click) = "gotoBluetoothle()" ><ion-icon name="bluetooth"></ion-icon></button>
+      <button ion-fab (click) = "gotoNFCShare()" ><ion-icon name="code-download"></ion-icon></button>
+      <!-- <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button> -->
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-content>

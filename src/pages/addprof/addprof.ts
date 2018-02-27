@@ -26,7 +26,7 @@ export class AddprofPage {
   
   
 
-  myInput
+  
 
 
   constructor(private AlertCtrl: AlertController, public navCtrl: NavController) {
