@@ -3,11 +3,18 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToProfile()">
+        <ion-icon name="person"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </button> 
+    </ion-buttons>
     <ion-title>VirtualDeck</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
 
 </ion-content>

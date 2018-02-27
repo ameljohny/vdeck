@@ -1,12 +1,11 @@
 //import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireModule } from 'angularfire2';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import{Personal} from '../../models/Personal';
 
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 /**
@@ -30,7 +29,7 @@ export class AddprofPage {
   myInput
 
 
-  constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
+  constructor(private AlertCtrl: AlertController, public navCtrl: NavController) {
   
 
   

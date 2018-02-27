@@ -1,5 +1,5 @@
-import { Component , ViewChild, ErrorHandler} from '@angular/core';
-import { IonicPage, NavController, NavParams , AlertController,IonicErrorHandler } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { AngularFireAuth   } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { OnInit } from '@angular/core';

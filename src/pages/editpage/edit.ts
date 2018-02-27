@@ -1,18 +1,24 @@
 
 
 
+
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
 import { AngularFireModule } from 'angularfire2';
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+
 
 import{Personal} from '../../models/Personal';
 
 
 
 import { LoginPage} from '../login/login'
+
 
 @Component({
   selector: 'page-edit',
@@ -35,7 +41,10 @@ firstname : string;
  personal = {} as Personal
  
 
+
 	 constructor(private AlertCtrl: AlertController, private afAuth:AngularFireAuth ,private afDatabase:AngularFireDatabase, public navCtrl: NavController) {
+
+
 
 
 
@@ -84,6 +93,7 @@ editmyprofile(){
       console.log(firebase.auth().currentUser.uid)
        console.log(user.Firstname);
 
+
        this.firstname = user.Firstname;
        this.lastname= user.Lastname;
        this.dob=user.Dob;
@@ -94,6 +104,7 @@ editmyprofile(){
        this.addr=user.address;
        console.log(this.addr);
 
+
        this.personal.Firstname = user.Firstname;
        this.personal.Lastname= user.Lastname;
        this.personal.Dob=user.Dob;
@@ -101,9 +112,8 @@ editmyprofile(){
        this.personal.Designation=user.Designation;
        this.personal.Phone=user.Phone;
        this.personal.email=user.email;
+
        this.personal.Address=user.address;
-
-
 
 
        
