@@ -6,12 +6,7 @@ import { OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { ValidatorFn } from '@angular/forms/src/directives/validators';
 import { AbstractControl } from '@angular/forms/src/model';
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -68,8 +63,12 @@ export class RegisterPage implements OnInit {
   	.then( (success) => {
       let user:any = firebase.auth().currentUser;
       user.sendEmailVerification().then(
-        (success) => {console.log("please verify your email")
-        console.log(user.IsEmailVerified)}  // displays the boolean value for verification
+        (success) => {
+        console.log("please verify your email");
+        console.log(user.IsEmailVerified);
+        alert("Registration started, Please verify your Email.");
+        this.navCtrl.setRoot(LoginPage);
+      }  // displays the boolean value for verification
         
       ).catch(
         (err) => {

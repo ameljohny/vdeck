@@ -9,6 +9,7 @@ import { EditPage} from '../editpage/edit';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ProfileProvider } from '../../providers/profile/profile';
 
+
 //@IonicPage()
 @Component({
   selector: 'page-userDetails',
@@ -187,9 +188,11 @@ navigateTo(){
         }
       ],
       buttons: [
-        { text: 'Cancel' },
+        { text: 'Cancel',
+        cssClass:'secondary' },
         {
           text: 'Save',
+          cssClass:'alertcss',
           handler: data => {
             let newEmail = data.newEmail;
 
@@ -204,6 +207,7 @@ navigateTo(){
           }
         }
       ]
+
     });
     alert.present();
   }
@@ -245,7 +249,7 @@ navigateTo(){
         {
           name: 'Company',
           placeholder: 'Your Company name',
-          value: this.userProfile.firstName
+          value: this.userProfile.Company
         },
         
       ],
@@ -269,7 +273,7 @@ navigateTo(){
         {
           name: 'Designation',
           placeholder: 'Your Designation',
-          value: this.userProfile.firstName
+          value: this.userProfile.Designation
         },
         
       ],
